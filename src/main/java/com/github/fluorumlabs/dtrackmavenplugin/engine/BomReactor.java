@@ -18,7 +18,6 @@ package com.github.fluorumlabs.dtrackmavenplugin.engine;
 
 import com.github.fluorumlabs.dtrack.ApiException;
 import com.github.fluorumlabs.dtrack.api.BomApi;
-import com.github.fluorumlabs.dtrack.model.BomSubmitRequest;
 import com.github.packageurl.MalformedPackageURLException;
 import com.github.packageurl.PackageURL;
 import org.apache.maven.artifact.Artifact;
