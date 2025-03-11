@@ -65,11 +65,12 @@ public class DtrackUploadMojo extends DtrackGenerateMojo {
         Semver newVersion = new Semver(getProject().getVersion(), Semver.SemverType.LOOSE);
 
         try {
-            for (Project otherProject : projectApi.getProjects(getConfiguration().getProjectName(), null)) {
+            var otherProjects = projectApi.getProjects(null, "1000", "0", "1000", null, null, getConfiguration().getProjectName(), Boolean.TRUE, null, null);
+            for (Project otherProject : otherProjects) {
                 Semver otherVersion = new Semver(otherProject.getVersion(), Semver.SemverType.LOOSE);
 
                 if (otherVersion.diff(newVersion).compareTo(getConfiguration().getKeepPreviousVersions()) > 0 && otherVersion.isLowerThan(newVersion)) {
-                    projectApi.deleteProject(otherProject.getUuid().toString());
+                    projectApi.deleteProject(otherProject.getUuid());
                 }
             }
         } catch (ApiException e) {
