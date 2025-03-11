@@ -287,16 +287,13 @@ public class BomReactor {
     }
 
     public void upload() throws ApiException {
+
         BomJsonGenerator bomGenerator = BomGeneratorFactory.createJson(CycloneDxSchema.Version.VERSION_12, bom);
         String bomJson = bomGenerator.toJsonString();
+        String version = bom.getMetadata().getComponent().getVersion();
 
-        BomSubmitRequest submitRequest = new BomSubmitRequest();
-        submitRequest.projectName(projectName)
-                .projectVersion(bom.getMetadata().getComponent().getVersion())
-                .autoCreate(true)
-                .bom(Base64.getEncoder().encodeToString(bomJson.getBytes(StandardCharsets.UTF_8)));
-
-        bomApi.uploadBom1(submitRequest);
+        var base64Bom = Base64.getEncoder().encodeToString(bomJson.getBytes(StandardCharsets.UTF_8));
+        bomApi.uploadBom(null, Boolean.TRUE, projectName, version, null, null, null, null, null, base64Bom);
     }
 
     public void write(Path target, String groupId, String artifactId, String version) throws ApiException {
