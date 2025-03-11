@@ -111,7 +111,6 @@ public class CweApi {
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getCweValidateBeforeCall(Integer cweId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'cweId' is set
         if (cweId == null) {
@@ -255,7 +254,6 @@ public class CweApi {
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getCwesValidateBeforeCall(String pageNumber, String pageSize, String offset, String limit, String sortName, String sortOrder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         com.squareup.okhttp.Call call = getCwesCall(pageNumber, pageSize, offset, limit, sortName, sortOrder, progressListener, progressRequestListener);

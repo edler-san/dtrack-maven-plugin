@@ -112,7 +112,6 @@ public class AclApi {
         return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call addMappingValidateBeforeCall(AclMappingRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         com.squareup.okhttp.Call call = addMappingCall(body, progressListener, progressRequestListener);
@@ -234,7 +233,6 @@ public class AclApi {
         return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call deleteMappingValidateBeforeCall(UUID teamUuid, UUID projectUuid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'teamUuid' is set
         if (teamUuid == null) {
@@ -389,7 +387,6 @@ public class AclApi {
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call retrieveProjectsValidateBeforeCall(UUID uuid, String pageNumber, String pageSize, String offset, String limit, String sortName, String sortOrder, Boolean excludeInactive, Boolean onlyRoot, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'uuid' is set
         if (uuid == null) {

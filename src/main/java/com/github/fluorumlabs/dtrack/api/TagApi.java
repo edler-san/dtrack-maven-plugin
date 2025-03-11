@@ -12,6 +12,14 @@
 
 package com.github.fluorumlabs.dtrack.api;
 
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
 import com.github.fluorumlabs.dtrack.ApiCallback;
 import com.github.fluorumlabs.dtrack.ApiClient;
 import com.github.fluorumlabs.dtrack.ApiException;
@@ -20,25 +28,11 @@ import com.github.fluorumlabs.dtrack.Configuration;
 import com.github.fluorumlabs.dtrack.Pair;
 import com.github.fluorumlabs.dtrack.ProgressRequestBody;
 import com.github.fluorumlabs.dtrack.ProgressResponseBody;
-
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
-
-import com.github.fluorumlabs.dtrack.model.ProblemDetails;
 import com.github.fluorumlabs.dtrack.model.Tag;
 import com.github.fluorumlabs.dtrack.model.TagListResponseItem;
-import com.github.fluorumlabs.dtrack.model.TagOperationProblemDetails;
 import com.github.fluorumlabs.dtrack.model.TaggedPolicyListResponseItem;
 import com.github.fluorumlabs.dtrack.model.TaggedProjectListResponseItem;
-import java.util.UUID;
-
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.google.gson.reflect.TypeToken;
 
 public class TagApi {
     private ApiClient apiClient;
@@ -116,7 +110,6 @@ public class TagApi {
         return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call deleteTagsValidateBeforeCall(List<String> body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         com.squareup.okhttp.Call call = deleteTagsCall(body, progressListener, progressRequestListener);
@@ -252,7 +245,6 @@ public class TagApi {
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getAllTagsValidateBeforeCall(String pageNumber, String pageSize, String offset, String limit, String sortName, String sortOrder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         com.squareup.okhttp.Call call = getAllTagsCall(pageNumber, pageSize, offset, limit, sortName, sortOrder, progressListener, progressRequestListener);
@@ -409,7 +401,6 @@ public class TagApi {
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getTaggedNotificationRulesValidateBeforeCall(String name, String pageNumber, String pageSize, String offset, String limit, String sortName, String sortOrder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -573,7 +564,6 @@ public class TagApi {
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getTaggedPoliciesValidateBeforeCall(String name, String pageNumber, String pageSize, String offset, String limit, String sortName, String sortOrder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -737,7 +727,6 @@ public class TagApi {
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getTaggedProjectsValidateBeforeCall(String name, String pageNumber, String pageSize, String offset, String limit, String sortName, String sortOrder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
@@ -901,7 +890,6 @@ public class TagApi {
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getTagsValidateBeforeCall(UUID policyUuid, String pageNumber, String pageSize, String offset, String limit, String sortName, String sortOrder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'policyUuid' is set
         if (policyUuid == null) {
@@ -1065,7 +1053,6 @@ public class TagApi {
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getTagsForPolicyValidateBeforeCall(UUID uuid, String pageNumber, String pageSize, String offset, String limit, String sortName, String sortOrder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'uuid' is set
         if (uuid == null) {
@@ -1212,7 +1199,6 @@ public class TagApi {
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call tagNotificationRulesValidateBeforeCall(List<UUID> body, String name, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'body' is set
         if (body == null) {
@@ -1344,7 +1330,6 @@ public class TagApi {
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call tagPoliciesValidateBeforeCall(List<UUID> body, String name, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'body' is set
         if (body == null) {
@@ -1476,7 +1461,6 @@ public class TagApi {
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call tagProjectsValidateBeforeCall(List<UUID> body, String name, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'body' is set
         if (body == null) {
@@ -1608,7 +1592,6 @@ public class TagApi {
         return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call untagNotificationRulesValidateBeforeCall(List<UUID> body, String name, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'body' is set
         if (body == null) {
@@ -1740,7 +1723,6 @@ public class TagApi {
         return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call untagPoliciesValidateBeforeCall(List<UUID> body, String name, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'body' is set
         if (body == null) {
@@ -1872,7 +1854,6 @@ public class TagApi {
         return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call untagProjectsValidateBeforeCall(List<UUID> body, String name, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'body' is set
         if (body == null) {

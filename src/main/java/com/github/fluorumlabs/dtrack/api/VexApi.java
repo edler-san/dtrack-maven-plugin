@@ -12,6 +12,14 @@
 
 package com.github.fluorumlabs.dtrack.api;
 
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
 import com.github.fluorumlabs.dtrack.ApiCallback;
 import com.github.fluorumlabs.dtrack.ApiClient;
 import com.github.fluorumlabs.dtrack.ApiException;
@@ -20,22 +28,9 @@ import com.github.fluorumlabs.dtrack.Configuration;
 import com.github.fluorumlabs.dtrack.Pair;
 import com.github.fluorumlabs.dtrack.ProgressRequestBody;
 import com.github.fluorumlabs.dtrack.ProgressResponseBody;
-
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
-
 import com.github.fluorumlabs.dtrack.model.BomUploadResponse;
-import com.github.fluorumlabs.dtrack.model.InvalidBomProblemDetails;
-import java.util.UUID;
 import com.github.fluorumlabs.dtrack.model.VexSubmitRequest;
-
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.google.gson.reflect.TypeToken;
 
 public class VexApi {
     private ApiClient apiClient;
@@ -117,7 +112,6 @@ public class VexApi {
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call exportProjectAsCycloneDx1ValidateBeforeCall(UUID uuid, Boolean download, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'uuid' is set
         if (uuid == null) {
@@ -247,7 +241,6 @@ public class VexApi {
         return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call uploadVexValidateBeforeCall(VexSubmitRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         com.squareup.okhttp.Call call = uploadVexCall(body, progressListener, progressRequestListener);
@@ -381,7 +374,6 @@ public class VexApi {
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call uploadVex1ValidateBeforeCall(String project, String projectName, String projectVersion, String vex, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         com.squareup.okhttp.Call call = uploadVex1Call(project, projectName, projectVersion, vex, progressListener, progressRequestListener);

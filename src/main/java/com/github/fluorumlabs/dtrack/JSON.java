@@ -15,11 +15,9 @@ package com.github.fluorumlabs.dtrack;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import io.gsonfire.GsonFireBuilder;
-import io.gsonfire.PostProcessor;
-import io.gsonfire.TypeSelector;
 import com.google.gson.JsonParseException;
+import com.google.gson.Strictness;
 import com.google.gson.TypeAdapter;
 import com.google.gson.internal.bind.util.ISO8601Utils;
 import com.google.gson.stream.JsonReader;
@@ -27,8 +25,6 @@ import com.google.gson.stream.JsonWriter;
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.OffsetDateTime;
 import org.threeten.bp.format.DateTimeFormatter;
-
-import com.github.fluorumlabs.dtrack.model.*;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -38,7 +34,6 @@ import java.text.ParseException;
 import java.text.ParsePosition;
 import java.util.Date;
 import java.util.Map;
-import java.util.HashMap;
 
 public class JSON {
     private Gson gson;
@@ -127,8 +122,7 @@ public class JSON {
         try {
             if (isLenientOnJson) {
                 JsonReader jsonReader = new JsonReader(new StringReader(body));
-                // see https://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/stream/JsonReader.html#setLenient(boolean)
-                jsonReader.setLenient(true);
+                jsonReader.setStrictness(Strictness.LENIENT);
                 return gson.fromJson(jsonReader, returnType);
             } else {
                 return gson.fromJson(body, returnType);

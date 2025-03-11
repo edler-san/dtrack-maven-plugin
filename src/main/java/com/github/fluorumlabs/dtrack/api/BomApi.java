@@ -12,6 +12,14 @@
 
 package com.github.fluorumlabs.dtrack.api;
 
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
 import com.github.fluorumlabs.dtrack.ApiCallback;
 import com.github.fluorumlabs.dtrack.ApiClient;
 import com.github.fluorumlabs.dtrack.ApiException;
@@ -20,23 +28,10 @@ import com.github.fluorumlabs.dtrack.Configuration;
 import com.github.fluorumlabs.dtrack.Pair;
 import com.github.fluorumlabs.dtrack.ProgressRequestBody;
 import com.github.fluorumlabs.dtrack.ProgressResponseBody;
-
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
-
 import com.github.fluorumlabs.dtrack.model.BomSubmitRequest;
 import com.github.fluorumlabs.dtrack.model.BomUploadResponse;
-import com.github.fluorumlabs.dtrack.model.InvalidBomProblemDetails;
 import com.github.fluorumlabs.dtrack.model.IsTokenBeingProcessedResponse;
-import java.util.UUID;
-
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.google.gson.reflect.TypeToken;
 
 public class BomApi {
     private ApiClient apiClient;
@@ -118,7 +113,6 @@ public class BomApi {
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call exportComponentAsCycloneDxValidateBeforeCall(UUID uuid, String format, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'uuid' is set
         if (uuid == null) {
@@ -258,7 +252,6 @@ public class BomApi {
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call exportProjectAsCycloneDxValidateBeforeCall(UUID uuid, String format, String variant, Boolean download, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'uuid' is set
         if (uuid == null) {
@@ -395,7 +388,6 @@ public class BomApi {
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call isTokenBeingProcessedValidateBeforeCall(UUID uuid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'uuid' is set
         if (uuid == null) {
@@ -551,7 +543,6 @@ public class BomApi {
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call uploadBomValidateBeforeCall(String project, Boolean autoCreate, String projectName, String projectVersion, String projectTags, String parentName, String parentVersion, String parentUUID, Boolean isLatest, String bom, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         com.squareup.okhttp.Call call = uploadBomCall(project, autoCreate, projectName, projectVersion, projectTags, parentName, parentVersion, parentUUID, isLatest, bom, progressListener, progressRequestListener);
@@ -701,7 +692,6 @@ public class BomApi {
         return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call uploadBomBase64EncodedValidateBeforeCall(BomSubmitRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'body' is set
         if (body == null) {
