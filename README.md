@@ -12,7 +12,7 @@ Even though this plug-in is not bound by default to any of the life-cycle stages
 
 `mvn package com.vaadin.dtrack:dtrack-maven-plugin:1.1.3:upload`
 
-Alternatively, you can add plug-in to you `pom.xml`:
+Alternatively, you can add plug-in to your `pom.xml`:
 
 ```xml
 ...
