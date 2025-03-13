@@ -14,69 +14,70 @@
  * limitations under the License.
  */
 
-package com.github.fluorumlabs.dtrackmavenplugin;
+ package com.github.fluorumlabs.dtrackmavenplugin;
 
-import org.apache.maven.plugin.MojoFailureException;
-import org.apache.maven.plugins.annotations.Mojo;
-import org.apache.maven.plugins.annotations.ResolutionScope;
-
-import com.vaadin.dtrack.ApiException;
-import com.vaadin.dtrack.Configuration;
-import com.vaadin.dtrack.api.Project;
-import com.vaadin.dtrack.api.ProjectApi;
-import com.vdurmont.semver4j.Semver;
-
-/**
- * A goal to generate SBOM (software bill of materials) and upload them to Dependency-Track SCA.
- * <p>
- * It is specifically designed for simplified CI/CD integration and can work without any
- * changes to project `pom.xml` files. One of the key differences from the traditional
- * cyclonedx-maven-plugin/dependency-track-maven-plugin combination is that dtrack-maven-plugin
- * can be used to extract NPM dependencies, specified inside Vaadin projects.
- * <p>
- * Note that NPM dependency resolution requires NPM installation.
- */
-@Mojo(name = "upload",
-        requiresDependencyResolution = ResolutionScope.COMPILE_PLUS_RUNTIME,
-        requiresDependencyCollection = ResolutionScope.COMPILE_PLUS_RUNTIME)
-public class DtrackUploadMojo extends DtrackGenerateMojo {
-    private final ProjectApi projectApi = new ProjectApi();
-
-    @Override
-    protected void processBom() throws ApiException, MojoFailureException {
-        getLog().info("Uploading to Dependency-Track...");
-        // Fail fast if API is not defined
-        if (getConfiguration().getApiKey() == null || getConfiguration().getApiServer() == null) {
-            throw new MojoFailureException("Dependency-Track API server and API key must be defined");
-        }
-
-        Configuration.getDefaultApiClient().setApiKey(getConfiguration().getApiKey());
-        Configuration.getDefaultApiClient().setBasePath(getConfiguration().getApiServer());
-
-        getBomReactor().upload();
-        cleanupPreviousVersions();
-    }
-
-    protected void cleanupPreviousVersions() {
-        if (getConfiguration().getKeepPreviousVersions() == null || getConfiguration().getKeepPreviousVersions() == Semver.VersionDiff.BUILD) {
-            return;
-        }
-        getLog().info("Cleaning up previous versions...");
-
-        Semver newVersion = new Semver(getProject().getVersion(), Semver.SemverType.LOOSE);
-
-        try {
-            var otherProjects = projectApi.getProjects(null, "1000", "0", "1000", null, null, getConfiguration().getProjectName(), Boolean.TRUE, null, null);
-            for (Project otherProject : otherProjects) {
-                Semver otherVersion = new Semver(otherProject.getVersion(), Semver.SemverType.LOOSE);
-
-                if (otherVersion.diff(newVersion).compareTo(getConfiguration().getKeepPreviousVersions()) > 0 && otherVersion.isLowerThan(newVersion)) {
-                    projectApi.deleteProject(otherProject.getUuid());
-                }
-            }
-        } catch (ApiException e) {
-            getLog().warn("Unable to delete previous versions", e);
-        }
-    }
-
-}
+ import org.apache.maven.plugin.MojoFailureException;
+ import org.apache.maven.plugins.annotations.Mojo;
+ import org.apache.maven.plugins.annotations.ResolutionScope;
+ 
+ import com.vaadin.dtrack.ApiException;
+ import com.vaadin.dtrack.Configuration;
+ import com.vaadin.dtrack.api.Project;
+ import com.vaadin.dtrack.api.ProjectApi;
+ import com.vdurmont.semver4j.Semver;
+ 
+ /**
+  * A goal to generate SBOM (software bill of materials) and upload them to Dependency-Track SCA.
+  * <p>
+  * It is specifically designed for simplified CI/CD integration and can work without any
+  * changes to project `pom.xml` files. One of the key differences from the traditional
+  * cyclonedx-maven-plugin/dependency-track-maven-plugin combination is that dtrack-maven-plugin
+  * can be used to extract NPM dependencies, specified inside Vaadin projects.
+  * <p>
+  * Note that NPM dependency resolution requires NPM installation.
+  */
+ @Mojo(name = "upload",
+         requiresDependencyResolution = ResolutionScope.COMPILE_PLUS_RUNTIME,
+         requiresDependencyCollection = ResolutionScope.COMPILE_PLUS_RUNTIME)
+ public class DtrackUploadMojo extends DtrackGenerateMojo {
+     private final ProjectApi projectApi = new ProjectApi();
+ 
+     @Override
+     protected void processBom() throws ApiException, MojoFailureException {
+         getLog().info("Uploading to Dependency-Track...");
+         // Fail fast if API is not defined
+         if (getConfiguration().getApiKey() == null || getConfiguration().getApiServer() == null) {
+             throw new MojoFailureException("Dependency-Track API server and API key must be defined");
+         }
+ 
+         Configuration.getDefaultApiClient().setApiKey(getConfiguration().getApiKey());
+         Configuration.getDefaultApiClient().setBasePath(getConfiguration().getApiServer());
+ 
+         getBomReactor().upload();
+         cleanupPreviousVersions();
+     }
+ 
+     protected void cleanupPreviousVersions() {
+         if (getConfiguration().getKeepPreviousVersions() == null || getConfiguration().getKeepPreviousVersions() == Semver.VersionDiff.BUILD) {
+             return;
+         }
+         getLog().info("Cleaning up previous versions...");
+ 
+         Semver newVersion = new Semver(getProject().getVersion(), Semver.SemverType.LOOSE);
+ 
+         try {
+             var otherProjects = projectApi.getProjects(null, "1000", "0", "1000", null, null, getConfiguration().getProjectName(), Boolean.TRUE, null, null);
+             for (Project otherProject : otherProjects) {
+                 Semver otherVersion = new Semver(otherProject.getVersion(), Semver.SemverType.LOOSE);
+ 
+                 if (otherVersion.diff(newVersion).compareTo(getConfiguration().getKeepPreviousVersions()) > 0 && otherVersion.isLowerThan(newVersion)) {
+                     projectApi.deleteProject(otherProject.getUuid());
+                 }
+             }
+         } catch (ApiException e) {
+             getLog().warn("Unable to delete previous versions", e);
+         }
+     }
+ 
+ }
+ 
