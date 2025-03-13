@@ -16,12 +16,22 @@
 
 package com.github.fluorumlabs.dtrackmavenplugin;
 
-import com.github.fluorumlabs.dtrack.ApiException;
-import com.github.fluorumlabs.dtrackmavenplugin.engine.BomReactor;
-import com.github.fluorumlabs.dtrackmavenplugin.engine.DependencyTree;
-import com.github.fluorumlabs.dtrackmavenplugin.engine.NpmReactor;
-import com.vdurmont.semver4j.Semver;
-import lombok.Getter;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+import java.util.function.Predicate;
+
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.DependencyResolutionRequiredException;
 import org.apache.maven.plugin.AbstractMojo;
@@ -30,18 +40,17 @@ import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.plugins.annotations.ResolutionScope;
-import org.apache.maven.project.*;
+import org.apache.maven.project.MavenProject;
+import org.apache.maven.project.ProjectBuildingException;
 import org.cyclonedx.model.Component;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.*;
-import java.util.function.Predicate;
+import com.github.fluorumlabs.dtrackmavenplugin.engine.BomReactor;
+import com.github.fluorumlabs.dtrackmavenplugin.engine.DependencyTree;
+import com.github.fluorumlabs.dtrackmavenplugin.engine.NpmReactor;
+import com.vaadin.dtrack.ApiException;
+import com.vdurmont.semver4j.Semver;
+
+import lombok.Getter;
 
 /**
  * A goal to generate SBOM (software bill of materials).
@@ -198,7 +207,8 @@ public class DtrackGenerateMojo extends AbstractMojo {
                 processDependencies();
                 processBom();
             } catch (IOException | ApiException | ProjectBuildingException e) {
-                getLog().error("Cannot create or upload BOM to Dependency-Track", e);
+                getLog().error("Cannot create or upload BOM to Dependency-Track" , e);
+                e.printStackTrace();
             }
         }
 

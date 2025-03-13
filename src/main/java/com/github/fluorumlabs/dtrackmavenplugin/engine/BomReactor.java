@@ -16,10 +16,27 @@
 
 package com.github.fluorumlabs.dtrackmavenplugin.engine;
 
-import com.github.fluorumlabs.dtrack.ApiException;
-import com.github.fluorumlabs.dtrack.api.BomApi;
-import com.github.packageurl.MalformedPackageURLException;
-import com.github.packageurl.PackageURL;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.UUID;
+import java.util.function.Predicate;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
+
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.model.MailingList;
 import org.apache.maven.model.Model;
@@ -35,21 +52,20 @@ import org.cyclonedx.CycloneDxSchema;
 import org.cyclonedx.exception.GeneratorException;
 import org.cyclonedx.generators.json.BomJsonGenerator;
 import org.cyclonedx.generators.xml.BomXmlGenerator;
-import org.cyclonedx.model.*;
+import org.cyclonedx.model.Bom;
+import org.cyclonedx.model.Component;
+import org.cyclonedx.model.Dependency;
+import org.cyclonedx.model.ExternalReference;
+import org.cyclonedx.model.LicenseChoice;
+import org.cyclonedx.model.Metadata;
+import org.cyclonedx.model.Tool;
 import org.cyclonedx.util.BomUtils;
 import org.cyclonedx.util.LicenseResolver;
 
-import java.io.*;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.*;
-import java.util.function.Predicate;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
+import com.github.packageurl.MalformedPackageURLException;
+import com.github.packageurl.PackageURL;
+import com.vaadin.dtrack.ApiException;
+import com.vaadin.dtrack.api.BomApi;
 
 public class BomReactor {
     private final BomApi bomApi = new BomApi();
@@ -291,8 +307,7 @@ public class BomReactor {
         String bomJson = bomGenerator.toJsonString();
         String version = bom.getMetadata().getComponent().getVersion();
 
-        var base64Bom = Base64.getEncoder().encodeToString(bomJson.getBytes(StandardCharsets.UTF_8));
-        bomApi.uploadBom(null, Boolean.TRUE, projectName, version, null, null, null, null, null, base64Bom);
+        bomApi.uploadBom(null, null, projectName, version, null, null, null, null, null, bomJson);
     }
 
     public void write(Path target, String groupId, String artifactId, String version) throws ApiException {

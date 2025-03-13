@@ -16,14 +16,15 @@
 
 package com.github.fluorumlabs.dtrackmavenplugin;
 
-import com.github.fluorumlabs.dtrack.ApiException;
-import com.github.fluorumlabs.dtrack.Configuration;
-import com.github.fluorumlabs.dtrack.api.ProjectApi;
-import com.github.fluorumlabs.dtrack.model.Project;
-import com.vdurmont.semver4j.Semver;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.ResolutionScope;
+
+import com.vaadin.dtrack.ApiException;
+import com.vaadin.dtrack.Configuration;
+import com.vaadin.dtrack.api.Project;
+import com.vaadin.dtrack.api.ProjectApi;
+import com.vdurmont.semver4j.Semver;
 
 /**
  * A goal to generate SBOM (software bill of materials) and upload them to Dependency-Track SCA.
