@@ -37,6 +37,7 @@ import java.util.function.Predicate;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
+import org.apache.commons.io.input.XmlStreamReader;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.model.MailingList;
 import org.apache.maven.model.Model;
@@ -46,6 +47,7 @@ import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.descriptor.PluginDescriptor;
 import org.apache.maven.plugin.logging.Log;
 import org.apache.maven.project.MavenProject;
+import org.apache.maven.shared.utils.ReaderFactory;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.cyclonedx.BomGeneratorFactory;
 import org.cyclonedx.CycloneDxSchema;
@@ -433,7 +435,7 @@ public class BomReactor {
     private MavenProject readPom(InputStream input) {
         try {
             MavenXpp3Reader mavenreader = new MavenXpp3Reader();
-            try (InputStreamReader reader = new InputStreamReader(input, StandardCharsets.UTF_8)) {
+            try (var reader = new XmlStreamReader(input)) {
                 Model model = mavenreader.read(reader);
                 return new MavenProject(model);
             }
