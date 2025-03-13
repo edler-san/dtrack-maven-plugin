@@ -17,8 +17,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <name>dtrack-maven-plugin</name>
-    <description>Maven plugin for deep integration with Dependency-Track</description>
-    <url>https://github.com/fluorumlabs/dtrack-maven-plugin</url>
+    <description>Maven plugin for deep integration with Dependency-Track forked from http://github.com/fluorumlabs/dtrack-maven-plugin/</description>
+    <url>https://github.com/vaadin/dtrack-maven-plugin</url>
 
     <licenses>
         <license>
@@ -26,30 +26,20 @@
             <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
         </license>
     </licenses>
-
-    <developers>
-        <developer>
-            <name>Artem Godin</name>
-            <email>artem@vaadin.com</email>
-            <organization>Vaadin</organization>
-            <organizationUrl>https://vaadin.com</organizationUrl>
-        </developer>
-    </developers>
-
     <scm>
-        <connection>scm:git:git://github.com/fluorumlabs/dtrack-maven-plugin.git</connection>
-        <developerConnection>scm:git:ssh://github.com:fluorumlabs/dtrack-maven-plugin.git</developerConnection>
-        <url>http://github.com/fluorumlabs/dtrack-maven-plugin/tree/master</url>
+        <connection>scm:git:git://github.com/vaadin/dtrack-maven-plugin.git</connection>
+        <developerConnection>scm:git:ssh://github.com:vaadin/dtrack-maven-plugin.git</developerConnection>
+        <url>http://github.com/vaadin/dtrack-maven-plugin/tree/master</url>
     </scm>
 
-    <groupId>com.github.fluorumlabs</groupId>
+    <groupId>com.vaadin.dtrack</groupId>
     <artifactId>dtrack-maven-plugin</artifactId>
     <packaging>maven-plugin</packaging>
     <version>1.1.3</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.8</java.version>
+        <java.version>17</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
     </properties>
@@ -70,7 +60,7 @@
         <dependency>
             <groupId>io.github.classgraph</groupId>
             <artifactId>classgraph</artifactId>
-            <version>4.8.116</version>
+            <version>4.8.179</version>
         </dependency>
         <dependency>
             <groupId>com.squareup.okhttp</groupId>
@@ -91,19 +81,19 @@
             <scope>provided</scope>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-core</artifactId>
-            <version>3.8.2</version>
+            <version>3.8.8</version>
         </dependency>
         <dependency>
             <scope>provided</scope>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-model</artifactId>
-            <version>3.8.2</version>
+            <version>3.8.8</version>
         </dependency>
         <dependency>
             <scope>provided</scope>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-plugin-api</artifactId>
-            <version>3.8.2</version>
+            <version>3.8.8</version>
         </dependency>
         <dependency>
             <scope>provided</scope>
