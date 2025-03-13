@@ -114,12 +114,6 @@
             <version>3.9.0</version>
         </dependency>
         <dependency>
-            <scope>compile</scope>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.36</version>
-        </dependency>
-        <dependency>
             <groupId>io.swagger</groupId>
             <artifactId>swagger-annotations</artifactId>
             <version>1.6.15</version>
