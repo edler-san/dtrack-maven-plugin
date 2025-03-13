@@ -6,10 +6,6 @@
 It is specifically designed for simplified CI/CD integration and can work without any changes to project `pom.xml` files.
 One of the key differences from the traditional `cyclonedx-maven-plugin`/`dependency-track-maven-plugin` combination is that `dtrack-maven-plugin` can be used to extract NPM dependencies, specified inside [Vaadin](https://vaadin.com) projects. Note that NPM dependency resolution requires NPM installation.
 
-## Known issues
-
-This plugin currently does not run successfully under Maven 3.9.x. Use version 3.8.x instead.
-
 ## Running
 
 Even though this plug-in is not bound by default to any of the life-cycle stages, it requires the projects to be built before running:
