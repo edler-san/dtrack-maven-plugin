@@ -12,14 +12,11 @@
 
 package com.vaadin.dtrack.auth;
 
-import com.vaadin.dtrack.Pair;
+import java.util.List;
+import java.util.Map;
 
 import com.squareup.okhttp.Credentials;
-
-import java.util.Map;
-import java.util.List;
-
-import java.io.UnsupportedEncodingException;
+import com.vaadin.dtrack.Pair;
 
 public class HttpBasicAuth implements Authentication {
     private String username;
