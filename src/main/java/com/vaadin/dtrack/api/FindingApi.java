@@ -12,6 +12,15 @@
 
 package com.vaadin.dtrack.api;
 
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+import com.google.gson.reflect.TypeToken;
 import com.vaadin.dtrack.ApiCallback;
 import com.vaadin.dtrack.ApiClient;
 import com.vaadin.dtrack.ApiException;
@@ -20,21 +29,6 @@ import com.vaadin.dtrack.Configuration;
 import com.vaadin.dtrack.Pair;
 import com.vaadin.dtrack.ProgressRequestBody;
 import com.vaadin.dtrack.ProgressResponseBody;
-
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
-
-import com.vaadin.dtrack.api.BomUploadResponse;
-import com.vaadin.dtrack.api.Finding;
-import java.util.UUID;
-
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class FindingApi {
     private ApiClient apiClient;
@@ -113,7 +107,6 @@ public class FindingApi {
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call analyzeProjectValidateBeforeCall(UUID uuid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'uuid' is set
         if (uuid == null) {
@@ -241,7 +234,6 @@ public class FindingApi {
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call exportFindingsByProjectValidateBeforeCall(UUID uuid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'uuid' is set
         if (uuid == null) {
@@ -403,7 +395,6 @@ public class FindingApi {
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getAllFindingsValidateBeforeCall(Boolean showInactive, String severity, String publishDateFrom, String publishDateTo, String textSearchField, String textSearchInput, String cvssv2From, String cvssv2To, String cvssv3From, String cvssv3To, String occurrencesFrom, String occurrencesTo, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         com.squareup.okhttp.Call call = getAllFindingsCall(showInactive, severity, publishDateFrom, publishDateTo, textSearchField, textSearchInput, cvssv2From, cvssv2To, cvssv3From, cvssv3To, occurrencesFrom, occurrencesTo, progressListener, progressRequestListener);
@@ -603,7 +594,6 @@ public class FindingApi {
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getAllFindings1ValidateBeforeCall(Boolean showInactive, Boolean showSuppressed, String severity, String analysisStatus, String vendorResponse, String publishDateFrom, String publishDateTo, String attributedOnDateFrom, String attributedOnDateTo, String textSearchField, String textSearchInput, String cvssv2From, String cvssv2To, String cvssv3From, String cvssv3To, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         com.squareup.okhttp.Call call = getAllFindings1Call(showInactive, showSuppressed, severity, analysisStatus, vendorResponse, publishDateFrom, publishDateTo, attributedOnDateFrom, attributedOnDateTo, textSearchField, textSearchInput, cvssv2From, cvssv2To, cvssv3From, cvssv3To, progressListener, progressRequestListener);
@@ -778,7 +768,6 @@ public class FindingApi {
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getFindingsByProjectValidateBeforeCall(UUID uuid, Boolean suppressed, String source, String accept, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'uuid' is set
         if (uuid == null) {

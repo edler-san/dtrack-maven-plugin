@@ -12,28 +12,19 @@
 
 package com.vaadin.dtrack.api;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
-import java.util.Arrays;
+import java.util.UUID;
+
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.vaadin.dtrack.api.Component;
-import com.vaadin.dtrack.api.ComponentProperty;
-import com.vaadin.dtrack.api.DependencyMetrics;
-import com.vaadin.dtrack.api.ExternalReference;
-import com.vaadin.dtrack.api.License;
-import com.vaadin.dtrack.api.OrganizationalContact;
-import com.vaadin.dtrack.api.OrganizationalEntity;
-import com.vaadin.dtrack.api.Project;
-import com.vaadin.dtrack.api.RepositoryMetaComponent;
-import com.vaadin.dtrack.api.Vulnerability;
+
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
 /**
  * Component
  */
