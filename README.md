@@ -1,6 +1,6 @@
 # dtrack-maven-plugin
 
-[![Maven Central](https://img.shields.io/maven-central/v/com.github.fluorumlabs/dtrack-maven-plugin)](https://repo.maven.apache.org/maven2/com/github/fluorumlabs/dtrack-maven-plugin/)
+[![Maven Central](https://img.shields.io/maven-central/v/com.vaadin.dtrack/dtrack-maven-plugin)](https://repo.maven.apache.org/maven2/com/vaadin/dtrack/dtrack-maven-plugin/)
 
 `dtrack-maven-plugin` is an easy-to-use tool to generate SBOM (software bill of materials) and upload them to [Dependency-Track](https://dependencytrack.org/) SCA.
 It is specifically designed for simplified CI/CD integration and can work without any changes to project `pom.xml` files.
@@ -10,7 +10,7 @@ One of the key differences from the traditional `cyclonedx-maven-plugin`/`depend
 
 Even though this plug-in is not bound by default to any of the life-cycle stages, it requires the projects to be built before running:
 
-`mvn package com.vaadin.dtrack:dtrack-maven-plugin:1.1.3:upload`
+`mvn package com.vaadin.dtrack:dtrack-maven-plugin:2.0.0:upload`
 
 Alternatively, you can add plug-in to your `pom.xml`:
 
@@ -19,7 +19,7 @@ Alternatively, you can add plug-in to your `pom.xml`:
 <plugin>
     <groupId>com.vaadin.dtrack</groupId>
     <artifactId>dtrack-maven-plugin</artifactId>
-    <version>1.1.3</version>
+    <version>2.0.0</version>
 </plugin>
 ...
 ```
@@ -129,7 +129,7 @@ npmDependencies:
 <plugin>
     <groupId>com.github.fluorumlabs</groupId>
     <artifactId>dtrack-maven-plugin</artifactId>
-    <version>1.1.2</version>
+    <version>2.0.0</version>
     <configuration>
         <settings>
             <!--
