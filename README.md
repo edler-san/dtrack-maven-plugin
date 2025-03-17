@@ -10,7 +10,7 @@ One of the key differences from the traditional `cyclonedx-maven-plugin`/`depend
 
 Even though this plug-in is not bound by default to any of the life-cycle stages, it requires the projects to be built before running:
 
-`mvn package com.vaadin.dtrack:dtrack-maven-plugin:2.0.0:upload`
+`mvn package com.vaadin.dtrack:dtrack-maven-plugin:2.0.1:upload`
 
 Alternatively, you can add plug-in to your `pom.xml`:
 
@@ -19,7 +19,7 @@ Alternatively, you can add plug-in to your `pom.xml`:
 <plugin>
     <groupId>com.vaadin.dtrack</groupId>
     <artifactId>dtrack-maven-plugin</artifactId>
-    <version>2.0.0</version>
+    <version>2.0.1</version>
 </plugin>
 ...
 ```
@@ -127,9 +127,9 @@ npmDependencies:
 ```xml
 ...
 <plugin>
-    <groupId>com.github.fluorumlabs</groupId>
+    <groupId>com.vaadin.dtrack</groupId>
     <artifactId>dtrack-maven-plugin</artifactId>
-    <version>2.0.0</version>
+    <version>2.0.1</version>
     <configuration>
         <settings>
             <!--

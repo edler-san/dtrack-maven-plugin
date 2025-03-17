@@ -307,7 +307,7 @@ public class BomReactor {
         String bomJson = bomGenerator.toJsonString();
         String version = bom.getMetadata().getComponent().getVersion();
 
-        bomApi.uploadBom(null, null, projectName, version, null, null, null, null, null, bomJson);
+        bomApi.uploadBom(null, Boolean.TRUE, projectName, version, null, null, null, null, null, bomJson);
     }
 
     public void write(Path target, String groupId, String artifactId, String version) throws ApiException {
@@ -433,7 +433,7 @@ public class BomReactor {
     private MavenProject readPom(InputStream input) {
         try {
             MavenXpp3Reader mavenreader = new MavenXpp3Reader();
-            try (var reader = new XmlStreamReader(input)) {
+            try (XmlStreamReader reader = new XmlStreamReader(input)) {
                 Model model = mavenreader.read(reader);
                 return new MavenProject(model);
             }

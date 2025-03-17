@@ -206,6 +206,11 @@ public class DtrackGenerateMojo extends AbstractMojo {
             return true;
         }
         for (MavenProject mavenProject : parents) {
+            //skip if no local pom exists
+            if(mavenProject.getOriginalModel().getPomFile() == null){
+                return true;
+            }
+
             // Skip if current project directory (or one of the parents) contains
             // .dtrackignore file
             if (Files.exists(mavenProject.getOriginalModel().getPomFile().toPath().getParent().resolve(".dtrackignore"))) {
