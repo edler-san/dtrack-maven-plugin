@@ -48,7 +48,6 @@
         <java.version>8</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <maven.version>3.9.0</maven.version>
     </properties>
 
     <dependencyManagement>
