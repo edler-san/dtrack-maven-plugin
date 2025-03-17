@@ -16,7 +16,9 @@
 
  package com.github.fluorumlabs.dtrackmavenplugin;
 
- import org.apache.maven.plugin.MojoFailureException;
+ import java.util.List;
+
+import org.apache.maven.plugin.MojoFailureException;
  import org.apache.maven.plugins.annotations.Mojo;
  import org.apache.maven.plugins.annotations.ResolutionScope;
  
@@ -66,7 +68,7 @@
          Semver newVersion = new Semver(getProject().getVersion(), Semver.SemverType.LOOSE);
  
          try {
-             var otherProjects = projectApi.getProjects(null, "1000", "0", "1000", null, null, getConfiguration().getProjectName(), Boolean.TRUE, null, null);
+             List<Project> otherProjects = projectApi.getProjects(null, "1000", "0", "1000", null, null, getConfiguration().getProjectName(), Boolean.TRUE, null, null);
              for (Project otherProject : otherProjects) {
                  Semver otherVersion = new Semver(otherProject.getVersion(), Semver.SemverType.LOOSE);
  
